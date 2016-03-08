@@ -3,7 +3,6 @@
 """
 webApp class
  Root for hierarchy of classes implementing web applications
-
  Copyright Jesus M. Gonzalez-Barahona and Gregorio Robles (2009-2015)
  jgb @ gsyc.es
  TSAI, SAT and SARO subjects (Universidad Rey Juan Carlos)
@@ -15,7 +14,6 @@ import socket
 
 class webApp:
     """Root of a hierarchy of classes implementing web applications
-
     This class does almost nothing. Usually, new classes will
     inherit from it, and by redefining "parse" and "process" methods
     will implement the logic of a web application in particular.
@@ -28,7 +26,6 @@ class webApp:
 
     def process(self, parsedRequest):
         """Process the relevant elements of the request.
-
         Returns the HTTP code for the reply, and an HTML page.
         """
 
@@ -49,14 +46,14 @@ class webApp:
         # parse and process methods (in a loop)
 
         while True:
-            print 'Waiting for connections'
+            print '	Waiting for connections'
             (recvSocket, address) = mySocket.accept()
-            print 'HTTP request received (going to parse and process):'
+            print '	HTTP request received (going to parse and process):'
             request = recvSocket.recv(2048)
             print request
             parsedRequest = self.parse(request)
             (returnCode, htmlAnswer) = self.process(parsedRequest)
-            print 'Answering back...'
+            print '	Answering back...'
             recvSocket.send("HTTP/1.1 " + returnCode + " \r\n\r\n"
                             + htmlAnswer + "\r\n")
             recvSocket.close()
