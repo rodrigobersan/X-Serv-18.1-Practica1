@@ -1,0 +1,13 @@
+<html><body>
+  <h3>{{ msg }}</h3>
+  <form action="" method="POST">
+      <input type="text" name = "url">
+      <input type="submit" value="Enviar">
+  </form>
+  <h3>Listado de las URLs acortadas hasta el momento:</h3>
+  <ul>
+    {% for url in urls %}
+      <li> {{ url.id }} - <a href ="{{ url.longurl }}"> {{ url.longurl }}</a> -  <a href ="{{ url.longurl }}"> {{ url.shorturl }}</a></li>
+    {% endfor %}
+  </ul>
+</body></html>
